@@ -102,7 +102,8 @@ class SDDockerBackend(AbstractSDBackend):
         conf_reload_set = set()
         for c_id in changed_containers:
             checks = self._get_checks_to_refresh(state, c_id)
-            conf_reload_set.update(set(checks))
+            if checks:
+                conf_reload_set.update(set(checks))
 
         if conf_reload_set:
             self.reload_check_configs = conf_reload_set

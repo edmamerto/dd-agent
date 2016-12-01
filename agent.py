@@ -245,7 +245,7 @@ class Agent(Daemon):
         if self._agentConfig.get('service_discovery'):
             self.sd_backend = get_sd_backend(self._agentConfig)
 
-        if _is_affirmative(self._agentConfig.get('sd_jmx_enable')):
+        if _is_affirmative(self._agentConfig.get('sd_jmx_enable', '')):
             pipe_path = get_jmx_pipe_path()
             if Platform.is_windows():
                 pipe_name = pipe_path.format(pipename=SD_PIPE_NAME)
